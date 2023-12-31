@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+
+  --ffu-margin-xs: 10px;
+  --ffu-margin-s: 20px;
+  --ffu-margin-m: 30px;
+  --ffu-margin-l: 40px;
+  --ffu-margin-xl: 50px;
+  --ffu-margin-xxl: 100px;
+
+  --ffu-padding-xs: 10px;
+  --ffu-padding-s: 20px;
+  --ffu-padding-m: 30px;
+  --ffu-padding-l: 40px;
+  --ffu-padding-xl: 50px;
+
+
+  --ffu-gap-xs: 10px;
+  --ffu-gap-s: 20px;
+  --ffu-gap-m: 30px;
+  --ffu-gap-l: 40px;
+  --ffu-gap-xl: 50px;
+  
+  /* COLORS */
+
+  --ffu-colorStarsBG: grey;
+  --ffu-colorStars: gold;
+  --ffu-color1:  #3c424596; 
+  --ffu-colorFilter: #5f67698f; 
+  --ffu-colorGeneralBody: #71919288; 
+  --ffu-colorFilmsBG: #dfcdc391;
+
+}
+
+
+body {
+min-height: 100svh;
+display: flex;
+justify-content:center;
+background-color: var(--ffu-colorGeneralBody);
+}
+.filter {
+  width: 45svh;
+  height: 25svh;
+  display: flex;
+  background-color: var(--ffu-colorFilter);
+  margin-top: var(--ffu-margin-xxl);
+  border-radius: 20px;
+  border: 1px solid var(--ffu-colorFilmsBG);
+}
+.peliculas {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ffu-gap-xl);
+  /* padding: var(--ffu-padding-m); */
+  margin-top: var(--ffu-margin-xxl);
+
+
+}
+.peliculas > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 250px;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ffu-colorFilmsBG);
+  border-radius: 20px;
+  border: 1px solid var(--ffu-colorFilter);
+  padding: var(--ffu-padding-s);
+  gap: var(--ffu-gap-xs);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.peliculas > div:hover {
+  transform: scale(1.1);
+}
+
+.peliculas > div > h3 {
+text-align: center;
+}
+.peliculas > div > p {
+  text-align: center;
+}
+
+.imgContainer {
+  display: flex;
+  width: 150px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgContainer > img {
+  width: 100%; 
+  height: 100%; 
+  /* object-fit: cover */
+  ;
+}
+
+.stars {
+margin-top: var(--ffu-margin-s);
+  display: flex;
+}
+.estrella {
+  width: 10px;
+  height: 10px;
+  background-color: var(--ffu-colorStarsBG);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.rellena {
+  background-color: var(--ffu-colorStars);
+}
