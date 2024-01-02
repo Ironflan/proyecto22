@@ -50,7 +50,7 @@ const peliculas = [
     image: 'https://pics.filmaffinity.com/the_pacific-295119601-large.jpg'
   },
   {
-    title: 'Star Wars III: La venganza de los sith',
+    title: 'Star Wars III: La venganza de los Sith',
     year: 2005,
     stars: 9,
     ratings: 103.419,
@@ -58,7 +58,7 @@ const peliculas = [
     image: 'https://pics.filmaffinity.com/star_wars_episode_iii_revenge_of_the_sith-699349136-large.jpg'
   },
   {
-    title: 'El señor de los anillos: El retorno del rey',
+    title: 'El señor de los anillos: El retorno del Rey',
     year: 2003,
     stars: 10,
     ratings: 185.961,
@@ -83,14 +83,79 @@ const peliculas = [
   },
 ];
 
+
 const genres = [];
 
 let genre = "";
 
-const crearSeleccionarGenero = () => {
-  const divFiltros = document.querySelector(".filter")
+let rating = null;
 
-  const seleccionarGenero = document.createElement("select")
+const createInputRating = () => {
+
+  const sectionFiltros = document.querySelector(".filter");
+  const inputRating = document.createElement("input");
+  const botonInput = document.createElement("button");
+
+  botonInput.textContent = "Buscar";
+
+  inputRating.type = "number";
+  inputRating.placeholder = "Puntuación mínima";
+  inputRating.min = 1;
+  inputRating.max = 10;
+  inputRating.step = 0.1; 
+
+
+  inputRating.addEventListener("input", (event) => {
+    rating = event.target.value === "" ? null : parseFloat(event.target.value);
+    filtrarPeliculas();
+  });
+
+  botonInput.addEventListener("click", () => {
+    filtrarPeliculas();
+  });
+
+  sectionFiltros.appendChild(inputRating);
+  sectionFiltros.appendChild(botonInput);
+  inputRating.classList.add("inputPuntuacion");
+  botonInput.classList.add("InputBoton");
+
+
+}
+
+
+
+
+const filtrarPeliculas = () => {
+  const filtrado = [];
+
+  for (const peli of peliculas) {
+    const cumpleGenero = genre === "" || genre === peli.genre;
+    const cumplePuntuacion = rating === null || (rating >= 1 && rating <= 10 && parseFloat(rating) <= peli.stars);
+
+    if (cumpleGenero && cumplePuntuacion) {
+      filtrado.push(peli);
+    }
+  }
+
+  printPeliculas(filtrado);
+};
+
+
+const fillGenres = (pelis) => {
+  //limpio todo
+genres.splice(0);
+  for (const peli of pelis) {
+    if (!genres.includes(peli.genre)) {
+      genres.push(peli.genre)
+    }
+  }
+}
+fillGenres(peliculas);
+
+const createSelectGenre = (genres) => {
+  const sectionFiltros = document.querySelector(".filter");
+
+  const selectGenre = document.createElement("select");
 
   for (const genre of genres) {
     const option = document.createElement("option");
@@ -98,10 +163,14 @@ const crearSeleccionarGenero = () => {
     option.value = genre;
     option.textContent = genre;
 
-    seleccionarGenero.appendChild(option);
-    
+    selectGenre.appendChild(option);
   }
-  divFiltros.appendChild(seleccionarGenero);
+sectionFiltros.appendChild(selectGenre);
+
+selectGenre.addEventListener("change", (event) => {
+  genre = event.target.value;
+  filtrarPeliculas(genre);
+})
 }
 
 const printPeliculas = (pelis) => {
@@ -150,3 +219,5 @@ const printPeliculas = (pelis) => {
 };
 
 printPeliculas(peliculas);
+createSelectGenre(genres);
+createInputRating();

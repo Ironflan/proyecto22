@@ -15,6 +15,12 @@ a {
   text-decoration: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 :root {
 
   --ffu-margin-xs: 10px;
@@ -59,9 +65,38 @@ background-color: var(--ffu-colorGeneralBody);
   width: 45svh;
   height: 25svh;
   display: flex;
+  flex-direction: column;
   background-color: var(--ffu-colorFilter);
   margin-top: var(--ffu-margin-xxl);
   border-radius: 20px;
+  border: 1px solid var(--ffu-colorFilmsBG);
+  gap: var(--ffu-gap-xs);
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+width: 130px;
+height: 35px;
+border-radius: 10px;
+text-align: center;
+border: 1px solid var(--ffu-colorFilmsBG);
+}
+
+.inputPuntuacion {
+  width: 130px;
+  height: 35px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid var(--ffu-colorFilmsBG);
+  text-align: center;
+}
+
+.inputBoton {
+  width: 80px;
+  height: 35px;
+  border-radius: 10px;
+
   border: 1px solid var(--ffu-colorFilmsBG);
 }
 .peliculas {
@@ -73,6 +108,7 @@ background-color: var(--ffu-colorGeneralBody);
   gap: var(--ffu-gap-xl);
   /* padding: var(--ffu-padding-m); */
   margin-top: var(--ffu-margin-xxl);
+  margin-bottom: var(--ffu-margin-s);
 
 
 }
@@ -131,4 +167,19 @@ margin-top: var(--ffu-margin-s);
 
 .rellena {
   background-color: var(--ffu-colorStars);
+}
+
+@media (max-width: 1520px) {
+
+  body {
+display: flex;
+flex-direction: column;
+align-items: center;
+  }
+  .filter {
+    display: flex;
+    align-content: center;
+    width: 60%;
+
+  }
 }
