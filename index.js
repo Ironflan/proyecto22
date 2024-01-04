@@ -104,28 +104,52 @@ const createInputRating = () => {
   inputRating.max = 10;
   inputRating.step = 0.1; 
 
+  let inputRatingValue = null
+
 
   inputRating.addEventListener("input", (event) => {
-    rating = event.target.value === "" ? null : parseFloat(event.target.value);
-    filtrarPeliculas();
+    inputRatingValue = event.target.value === "" ? null : parseFloat(event.target.value);
+  
   });
 
   botonInput.addEventListener("click", () => {
+    rating = inputRatingValue;
     filtrarPeliculas();
   });
 
   sectionFiltros.appendChild(inputRating);
   sectionFiltros.appendChild(botonInput);
   inputRating.classList.add("inputPuntuacion");
-  botonInput.classList.add("InputBoton");
+  botonInput.classList.add("inputBoton");
 
 
 }
 
 
+const createClearFiltersButton = () => {
+
+  const sectionFiltros = document.querySelector(".filter");
+  const clearFiltersButton = document.createElement("button");
+
+  clearFiltersButton.textContent = "Limpiar Filtros";
+
+  clearFiltersButton.addEventListener("click", () => {
+
+    genre = "";
+    rating = null;
+    document.querySelector(".inputPuntuacion").value = "";
+    document.querySelector("select").selectedIndex = 0;
+    filtrarPeliculas();
+  });
+
+  sectionFiltros.appendChild(clearFiltersButton);
+  clearFiltersButton.classList.add("filtersButton");
+
+}
 
 
 const filtrarPeliculas = () => {
+  // rating = null;
   const filtrado = [];
 
   for (const peli of peliculas) {
@@ -221,3 +245,4 @@ const printPeliculas = (pelis) => {
 printPeliculas(peliculas);
 createSelectGenre(genres);
 createInputRating();
+createClearFiltersButton();

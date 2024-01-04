@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Merriweather:ital,wght@1,700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family:'Josefin Sans', sans-serif;
+  font-family: 'Merriweather', serif;
+  
 }
 
 ul, ol {
@@ -51,6 +53,14 @@ input::-webkit-inner-spin-button {
   --ffu-colorFilter: #5f67698f; 
   --ffu-colorGeneralBody: #71919288; 
   --ffu-colorFilmsBG: #dfcdc391;
+  --ffu-colorHover: #d18259;
+  --ffu-colorText: #020b01;
+  --ffu-colorBG: #e7d1de;
+
+  --ffu-fontSize-xs: 10px;
+  --ffu-fontSize-s: 12px;
+  --ffu-fontSize-m: 15px;
+  --ffu-fontSize-l: 18px;
 
 }
 
@@ -81,8 +91,13 @@ height: 35px;
 border-radius: 10px;
 text-align: center;
 border: 1px solid var(--ffu-colorFilmsBG);
+background-color: var(--ffu-colorBG);
+font-size: var(--ffu-fontSize-m);
 }
-
+.inputContainer {
+  display: flex;
+  gap: var(--ffu-gap-m);
+}
 .inputPuntuacion {
   width: 130px;
   height: 35px;
@@ -96,9 +111,28 @@ border: 1px solid var(--ffu-colorFilmsBG);
   width: 80px;
   height: 35px;
   border-radius: 10px;
-
   border: 1px solid var(--ffu-colorFilmsBG);
+  font-size: var(--ffu-fontSize-m);
 }
+
+.inputBoton:hover {
+  background-color: var(--ffu-colorHover); 
+  color: var(--ffu-colorText); 
+}
+.filtersButton {
+  width: 120px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid var(--ffu-colorFilmsBG);
+  font-size: var(--ffu-fontSize-m);
+}
+
+.filtersButton:hover {
+  background-color: var(--ffu-colorHover);
+  color: var(--ffu-colorText);
+}
+
+
 .peliculas {
   width: 60%;
   display: flex;
@@ -137,6 +171,7 @@ text-align: center;
 }
 .peliculas > div > p {
   text-align: center;
+  font-size: var(--ffu-fontSize-xs);
 }
 
 .imgContainer {
