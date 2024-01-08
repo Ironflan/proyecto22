@@ -34,6 +34,30 @@ const peliculas = [
     image: 'https://pics.filmaffinity.com/shutter_island-215721197-large.jpg'
   },
   {
+    title: 'Gangs of New York',
+    year: 2002,
+    stars: 6.7,
+    ratings: 70.837,
+    genre: 'Drama',
+    image: 'https://pics.filmaffinity.com/gangs_of_new_york-446593470-mmed.jpg'
+  },
+  {
+  title: 'Vacaciones en el infierno',
+  year: 2012,
+  stars: 6.1,
+  ratings: 11.295,
+  genre: 'Thriller',
+  image: 'https://pics.filmaffinity.com/get_the_gringo_how_i_spent_my_summer_vacation-108528058-mmed.jpg'
+},
+  {
+    title: 'Por encima de la ley',
+    year: 1988,
+    stars: 4,
+    ratings: 4.388,
+    genre: 'Thriller',
+    image: 'https://pics.filmaffinity.com/above_the_law_nico-473935454-mmed.jpg'
+  },
+  {
     title: 'Hermanos de sangre',
     year: 2001,
     stars: 8.5,
@@ -48,6 +72,14 @@ const peliculas = [
     ratings: 22.548,
     genre: 'Bélico',
     image: 'https://pics.filmaffinity.com/the_pacific-295119601-large.jpg'
+  },
+  {
+    title: 'Condemor, el pecador de la pradera',
+    year: 1996,
+    stars: 2,
+    ratings: 10.241,
+    genre: 'Bélico',
+    image: 'https://pics.filmaffinity.com/aqui_llega_condemor_el_pecador_de_la_pradera-499996633-mmed.jpg'
   },
   {
     title: 'Star Wars III: La venganza de los Sith',
@@ -81,6 +113,14 @@ const peliculas = [
     genre: 'Drama',
     image: 'https://pics.filmaffinity.com/the_wire-680717276-mmed.jpg'
   },
+  {
+    title: 'Los caballeros del zodiaco',
+    year: 2023,
+    stars: 3,
+    ratings: 1.687,
+    genre: 'Ciencia ficción',
+    image: 'https://pics.filmaffinity.com/saint_seiya_knights_of_the_zodiac-147845077-mmed.jpg'
+  },
 ];
 
 
@@ -90,6 +130,8 @@ let genre = "";
 
 let rating = null;
 
+
+
 const createInputRating = () => {
 
   const sectionFiltros = document.querySelector(".filter");
@@ -98,6 +140,8 @@ const createInputRating = () => {
 
   botonInput.textContent = "Buscar";
 
+  inputRating.id = "puntuacion";
+  inputRating.name = "puntuacion";
   inputRating.type = "number";
   inputRating.placeholder = "Puntuación mínima";
   inputRating.min = 1;
@@ -149,7 +193,6 @@ const createClearFiltersButton = () => {
 
 
 const filtrarPeliculas = () => {
-  // rating = null;
   const filtrado = [];
 
   for (const peli of peliculas) {
@@ -159,9 +202,24 @@ const filtrarPeliculas = () => {
     if (cumpleGenero && cumplePuntuacion) {
       filtrado.push(peli);
     }
+    
   }
 
-  printPeliculas(filtrado);
+  // const divPelis = document.querySelector(".peliculas");
+
+  // if (rating !== null && filtrado.length === 0) {
+  //   divPelis.innerHTML = "<h2>No se han encontrado resultados...</h2>";
+  // } else {
+  //   printPeliculas(filtrado);
+  // }
+  const divPelis = document.querySelector(".peliculas");
+
+  if (rating ===1) {
+    divPelis.innerHTML = "<h2>No se han encontrado resultados...</h2>";
+  } else {
+    printPeliculas(filtrado);
+  }
+
 };
 
 
@@ -180,6 +238,14 @@ const createSelectGenre = (genres) => {
   const sectionFiltros = document.querySelector(".filter");
 
   const selectGenre = document.createElement("select");
+
+  selectGenre.id = "genero";
+  selectGenre.name = "genero";
+
+  const allGenres = document.createElement("option");
+  allGenres.value = "";
+  allGenres.textContent = "Todas"
+  selectGenre.appendChild(allGenres);
 
   for (const genre of genres) {
     const option = document.createElement("option");

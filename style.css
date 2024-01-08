@@ -15,6 +15,7 @@ ul, ol {
 
 a {
   text-decoration: none;
+  color: var(--ffu-colorBG);
 }
 
 input::-webkit-outer-spin-button,
@@ -54,8 +55,12 @@ input::-webkit-inner-spin-button {
   --ffu-colorGeneralBody: #71919288; 
   --ffu-colorFilmsBG: #dfcdc391;
   --ffu-colorHover: #d18259;
+  --ffu-colorStrongSalmon: #cb6e3b;
+  --ffu-colorSand: #d6b875;
   --ffu-colorText: #020b01;
   --ffu-colorBG: #e7d1de;
+  --ffu-colorGreen: #0f4044;
+  --ffu-colorDarkGreen: #061a06;
 
   --ffu-fontSize-xs: 10px;
   --ffu-fontSize-s: 12px;
@@ -64,12 +69,65 @@ input::-webkit-inner-spin-button {
 
 }
 
+header {
+  display: flex;
+  width: 100%;
+  height: 75px;
+  background-color: var(--ffu-colorGreen);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  justify-content: space-around;
+  align-items: center;
+}
 
-body {
-min-height: 100svh;
+#titulo-logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--ffu-gap-s);
+}
+
+.logoHeader { 
+  width: 45px;
+  cursor: pointer;
+}
+
+h1 {
+  cursor: pointer;
+  color: var(--ffu-colorFilmsBG);
+}
+
+#user-login-container {
+display: flex;
+justify-content: flex-end;
+font-size: 14px;
+color: var(--ffu-colorFilmsBG);
+}
+.hamburger {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 1rem;
+  right: 1rem;
+  padding: 4px;
+  cursor: pointer;
+background-color: transparent;
+}
+
+.hamburger > img {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+
+}
+
+#sections-container {
+  min-height: 100vh;
 display: flex;
 justify-content:center;
 background-color: var(--ffu-colorGeneralBody);
+flex-wrap: wrap;
+
 }
 .filter {
   width: 45svh;
@@ -83,6 +141,7 @@ background-color: var(--ffu-colorGeneralBody);
   gap: var(--ffu-gap-xs);
   justify-content: center;
   align-items: center;
+  padding: var(--ffu-padding-xs);
 }
 
 select {
@@ -203,6 +262,30 @@ margin-top: var(--ffu-margin-s);
 .rellena {
   background-color: var(--ffu-colorStars);
 }
+/* FOOTER */
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 75px;
+  background-color: var(--ffu-color1);
+  justify-content: space-around;
+  align-items: center;
+  bottom: 0;
+}
+
+#faq-condiciones-container {
+  display: flex;
+  color: var(--ffu-colorBG);
+  gap: var(--ffu-gap-s);
+  font-size: 10px;
+}
+
+#rights-container {
+  display: flex;
+  font-size: 10px;
+  text-align: center;
+}
 
 @media (max-width: 1520px) {
 
@@ -217,4 +300,99 @@ align-items: center;
     width: 60%;
 
   }
+}
+
+@media (max-width: 990px) {
+  header {
+    justify-content: space-between;
+    padding: var(--ffu-padding-s);
+  }
+
+  #user-login-container {
+    display: none;
+  }
+
+  #faq-condiciones-container {
+    padding: var(--ffu-padding-s);
+    text-align: center;
+    font-size: 10px;
+  }
+
+  #rights-container {
+  display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  .peliculas {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ffu-gap-xl);
+    /* padding: var(--ffu-padding-m); */
+    margin-top: var(--ffu-margin-xxl);
+    margin-bottom: var(--ffu-margin-s);
+  
+  
+  }
+
+  .peliculas > div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 150px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ffu-colorFilmsBG);
+    border-radius: 20px;
+    border: 1px solid var(--ffu-colorFilter);
+    padding: var(--ffu-padding-s);
+    gap: var(--ffu-gap-xs);
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+
+  .peliculas > div > h3 {
+    text-align: center;
+    font-size: 12px;
+    }
+    .peliculas > div > p {
+      text-align: center;
+      font-size: var(--ffu-fontSize-xs);
+      font-size: 8px;
+    }
+    
+    .imgContainer {
+      display: flex;
+      width: 80px;
+      height: 130px;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .imgContainer > img {
+      width: 100%; 
+      height: 100%; 
+      /* object-fit: cover */
+      ;
+    }
+    
+    .stars {
+    margin-top: var(--ffu-margin-s);
+      display: flex;
+    }
+    .estrella {
+      width: 10px;
+      height: 10px;
+      background-color: var(--ffu-colorStarsBG);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .rellena {
+      background-color: var(--ffu-colorStars);
+    }
 }
